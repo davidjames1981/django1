@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Onboarding Form{% endblock %}
+
+{% block content %}
+    <h1>Onboarding Form</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="id_first_name">New Users First Name:</label></td>
+                <td>{{ form.first_name }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_surname">New Users Surname:</label></td>
+                <td>{{ form.surname }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_manager_email">New Users Line Managers Email:</label></td>
+                <td>{{ form.manager_email }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_job_title">New Users Job Title:</label></td>
+                <td>{{ form.job_title }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_department">New user Department:</label></td>
+                <td>{{ form.department }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_department">Base site of the New user:</label></td>
+                <td>{{ form.site }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_email">Submitters Email:</label></td>
+                <td>{{ form.email }}</td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit" name="save">Save for Later</button>
+        <button type="submit" name="next">Next</button>
+    </form>
+    
+{% endblock %}

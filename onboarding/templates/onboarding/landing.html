@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Onboarding Instructions{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the IT Onboarding Process</h1>
+    <p>
+        The onboarding process is designed to ensure that new employees have access to the IT resources and tools they need to get started. 
+        Please follow the steps below to complete the onboarding process:
+    </p>
+    <ol>
+        <li><strong>Step 1:</strong> Fill out the onboarding form by providing details such as your name, manager's email, job title, department, and site.</li>
+        <li><strong>Step 2:</strong> Once you have entered all the required information, click "Submit" to send the form to the IT department for processing.</li>
+        <li><strong>Step 3:</strong> If you need to save the form and complete it later, click "Save for Later" and return to complete the form at any time.</li>
+        <li><strong>Step 4:</strong> You can view and edit any unsubmitted forms from the "Saved Forms" page.</li>
+        <li><strong>Step 5:</strong> Once the form is submitted, it cannot be edited, but you can still view it for reference.</li>
+    </ol>
+    <br>
+    <p>If you have any questions or need assistance, please contact the IT department.</p>
+
+    <h3>Quick Links:</h3>
+    <ul>
+        <li><a href="{% url 'onboarding_create' %}">Start a New Onboarding Form</a></li>
+        <li><a href="{% url 'onboarding_list' %}">View Saved Forms</a></li>
+    </ul>
+{% endblock %}

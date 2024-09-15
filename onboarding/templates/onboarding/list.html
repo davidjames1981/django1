@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Saved Onboarding Forms{% endblock %}
+
+{% block content %}
+    <h1>Saved Onboarding Forms</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>New Users First Name</th>
+                <th>New Users Surname</th>
+                <th>New Users Line Managers Email</th>
+                <th>New Users Job Title</th>
+                <th>Base site of the New user</th>
+                <th>Submitters Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in forms %}
+            <tr>
+                <td>{{ form.first_name }}</td>
+                <td>{{ form.surname }}</td>
+                <td>{{ form.manager_email }}</td>
+                <td>{{ form.job_title }}</td>
+                <td>{{ form.department }}</td>
+                <td>{{ form.email }}</td>
+                <td><a href="{% url 'onboarding_edit' form.id %}"><button>Edit</button></a></td>
+                <td>
+                    <form method="POST" action="{% url 'onboarding_delete' form.id %}">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color: red; color: white;">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8">No saved forms available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{% url 'onboarding_create' %}">Start a New Onboarding Form</a>
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        form button {
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+        }
+        form button:hover {
+            opacity: 0.8;
+        }
+    </style>
+{% endblock %}

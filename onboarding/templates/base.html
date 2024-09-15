@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}IT Onboarding{% endblock %}</title>
+    <style>
+        /* Basic styling for the menu */
+        table {
+            width: 50%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table td {
+            padding: 10px;
+        }
+        table td label {
+            font-weight: bold;
+        }
+        table td input, table td select {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #0a6cbd;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: #122eaa;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .navbar img {
+            float: left;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .navbar-right {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Logo -->
+
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown">
+            <button class="dropbtn">Onboarding 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'onboarding_landing' %}">Instructions</a>
+                <a href="{% url 'onboarding_create' %}">New User Form</a>
+                <a href="{% url 'onboarding_list' %}">Saved Forms</a>
+            </div>
+        </div>
+
+        <!-- Login/Logout Links -->
+        <div class="navbar-right">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout ({{ user.username }})</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        <!-- Content for child templates will go here -->
+        {% endblock %}
+    </div>
+</body>
+</html>

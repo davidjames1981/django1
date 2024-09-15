@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Hardware Request Form{% endblock %}
+
+{% block content %}
+    <h1>Hardware Request</h1>
+    <style>
+        .radio-label {
+            display: inline-block;
+            margin-left: 5px;
+        }
+    
+        .radio-group {
+            display: flex;
+            flex-direction: column; /* Aligns vertically by default */
+        }
+    
+        .radio-group-inline {
+            display: flex;
+            align-items: center; /* Aligns radio buttons and text inline */
+        }
+    
+        .radio-group-inline input {
+            margin-right: 10px;
+        }
+    </style>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+
+        <tr>
+            <td><label for="id_need_hardware">Need Hardware (Y/N):</label></td>
+            <td>{{ form.need_hardware }}</td>
+        </tr>
+        <tr>
+            <td><label for="id_need_wfh_hardware">Need Work From Home Hardware (Y/N):</label></td>
+            <td>{{ form.need_wfh_hardware }}</td>
+        </tr>
+        <td><label for="id_hardware_option">Select Hardware:</label></td>
+        <td>
+            {{ form.hardware_option }}  <!-- Make sure this field is always visible -->
+        </td>
+    </table>
+
+    <button type="submit" name="save">Save for Later</button>
+    <button type="submit" name="submit">Submit</button>
+</form>
+
+
+<script>
+    const needHardwareField = document.getElementById('id_need_hardware');
+    const hardwareOptionField = document.getElementById('id_hardware_option');
+
+    function toggleHardwareOption() {
+        if (needHardwareField.value === 'Y') {
+            hardwareOptionField.disabled = false;  // Enable if hardware is needed
+        } else {
+            hardwareOptionField.disabled = true;  // Disable if hardware is not needed
+        }
+    }
+
+    // Initial load
+    toggleHardwareOption();
+
+    // Add event listener to change the state of hardware_option when need_hardware changes
+    needHardwareField.addEventListener('change', toggleHardwareOption);
+</script>
+    
+{% endblock %}

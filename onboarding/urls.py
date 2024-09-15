@@ -11,4 +11,6 @@ urlpatterns = [
     path('edit/<int:form_id>/', views.onboarding_form, name='onboarding_edit'),
     path('delete/<int:form_id>/', views.onboarding_delete, name='onboarding_delete'),
     path('hardware/<int:form_id>/', views.onboarding_hardware, name='onboarding_hardware'),  # Add this line
+    path('applications/<int:form_id>', views.onboarding_applications, name='onboarding_applications'),  # URL for the application form
+    
 ]

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Applications Form{% endblock %}
+
+{% block content %}
+    <h2>Applications Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="id_invoice_automation">Invoice Automation:</label></td>
+                <td>{{ form.invoice_automation }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_warranty_system">Warranty System:</label></td>
+                <td>{{ form.warranty_system }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_syspro_man">Syspro Man:</label></td>
+                <td>{{ form.syspro_man }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_syspro_aft">Syspro Aft:</label></td>
+                <td>{{ form.syspro_aft }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_syspro_int">Syspro Int:</label></td>
+                <td>{{ form.syspro_int }}</td>
+            </tr>
+        </table>
+        <div class="form-buttons">
+            <button type="submit" name="save">Save for Later</button>
+            <button type="submit" name ="submit">Submit</button>
+
+        </div>
+    </form>
+{% endblock %}

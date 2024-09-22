@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'onboarding'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,7 +93,9 @@ DATABASES = {
     }
 }
 
-
+DATABASES["default"] = dj_database_url.parse("postgresql://db_test_django_user:IMmetgqm4Od55ezhxe8GBy8iptCHdkjZ@dpg-cro0ua08fa8c738m15o0-a.frankfurt-postgres.render.com/db_test_django")
+ 
+ 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -134,5 +138,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/onboarding/'
-LOGOUT_REDIRECT_URL = '/'  # Or use the URL name, e.g. 'login'
+LOGIN_REDIRECT_URL = '/onboarding/'  # or another URL
+LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout

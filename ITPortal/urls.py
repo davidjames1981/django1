@@ -25,7 +25,7 @@ urlpatterns = [
     path('onboarding/', include('onboarding.urls')),  # Include the onboarding app URLs
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-     path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('favicon.ico', lambda x: HttpResponse(status=204)),
     
     # Redirect the root URL to the login page

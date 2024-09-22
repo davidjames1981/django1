@@ -3,42 +3,66 @@
 {% block title %}Create Onboarding Form{% endblock %}
 
 {% block content %}
-    <h1>Onboarding Form</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td><label for="id_first_name">New Users First Name:</label></td>
-                <td>{{ form.first_name }}</td>
-            </tr>
-            <tr>
-                <td><label for="id_surname">New Users Surname:</label></td>
-                <td>{{ form.surname }}</td>
-            </tr>
-            <tr>
-                <td><label for="id_manager_email">New Users Line Managers Email:</label></td>
-                <td>{{ form.manager_email }}</td>
-            </tr>
-            <tr>
-                <td><label for="id_job_title">New Users Job Title:</label></td>
-                <td>{{ form.job_title }}</td>
-            </tr>
-            <tr>
-                <td><label for="id_department">New user Department:</label></td>
-                <td>{{ form.department }}</td>
-            </tr>
-            <tr>
-                <td><label for="id_department">Base site of the New user:</label></td>
-                <td>{{ form.site }}</td>
-            </tr>
-            <tr>
-                <td><label for="id_email">Submitters Email:</label></td>
-                <td>{{ form.email }}</td>
-            </tr>
-        </table>
-        <br>
-        <button type="submit" name="save">Save for Later</button>
-        <button type="submit" name="next">Next</button>
-    </form>
-    
+<h1>Onboarding Form</h1>
+<div style="display: flex; width: 100%; box-sizing: border-box;">
+    <!-- Form section -->
+    <div style="flex: 1; padding-right: 20px;">
+        <form method="POST" style="width: 100%;">
+            {% csrf_token %}
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 40%;"><label for="id_first_name">First Name:</label></td>
+                    <td style="width: 60%;">{{ form.first_name }}</td>
+                </tr>
+                <tr>
+                    <td><label for="id_surname">New Users Surname:</label></td>
+                    <td>{{ form.surname }}</td>
+                </tr>
+                <tr>
+                    <td><label for="id_manager_email">New Users Line Managers Email:</label></td>
+                    <td>{{ form.manager_email }}</td>
+                </tr>
+                <tr>
+                    <td><label for="id_job_title">New Users Job Title:</label></td>
+                    <td>{{ form.job_title }}</td>
+                </tr>
+                <tr>
+                    <td><label for="id_department">New User Department:</label></td>
+                    <td>{{ form.department }}</td>
+                </tr>
+                <tr>
+                    <td><label for="id_site">Base site of the New user:</label></td>
+                    <td>{{ form.site }}</td>
+                </tr>
+                <tr>
+                    <td><label for="id_email">Submitters Email:</label></td>
+                    <td>{{ form.email }}</td>
+                </tr>
+            </table>
+            <br>
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit" name="save" style="width: 48%;">Save for Later</button>
+                <button type="submit" name="next" style="width: 48%;">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Instructions section -->
+    <div style="flex: 1; padding-left: 20px; background-color: #f9f9f9; border-left: 1px solid #ccc;">
+        <h2>Instructions</h2>
+        <p>Please fill out the form carefully by entering the correct details of the new user.</p>
+        <ul>
+            <li><strong>First Name:</strong> Enter the first name of the new user.</li>
+            <li><strong>Surname:</strong> Enter the surname of the new user.</li>
+            <li><strong>Manager's Email:</strong> Enter the email of the user's line manager.</li>
+            <li><strong>Job Title:</strong> Enter the new user's job title in the organization.</li>
+            <li><strong>Department:</strong> Select the department the new user will belong to.</li>
+            <li><strong>Base Site:</strong> Enter the base location of the new user.</li>
+            <li><strong>Submitter's Email:</strong> Enter your own email address.</li>
+        </ul>
+        <p>Once you're done, you can choose to either save the form for later or proceed by clicking "Next".</p>
+    </div>
+</div>
+
+
 {% endblock %}

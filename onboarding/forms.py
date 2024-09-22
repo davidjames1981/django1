@@ -1,15 +1,61 @@
 from django import forms
-from .models import OnboardingForm, HardwareOption,Site
+from .models import OnboardingForm, HardwareOption,Site,Department
 
 
 class OnboardingFormInitial(forms.ModelForm):
-    # first_name = forms.CharField(label='New Users First Name', required=True)
-    # surname = forms.CharField(label='New Users Surname', required=True)
-    # manager_email = forms.EmailField(label='New Users Line Managers Email', required=True)
-    # job_title = forms.CharField(label='New Users Job Title', required=True)
-    # department = forms.CharField(label='Department', required=True)
-    # site = forms.ModelChoiceField(queryset=Site.objects.all(), label='Base site of the New user', required=True)
-    # email = forms.EmailField(label='Submitters Email', required=True)
+    first_name = forms.CharField(
+        label='New Users First Name', 
+        required=True, 
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter the first name',
+            'required': 'required'
+        })
+    )
+    surname = forms.CharField(
+        label='New Users Surname', 
+        required=True, 
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter the surname',
+            'required': 'required'
+        })
+    )
+    manager_email = forms.EmailField(
+        label='New Users Line Managers Email', 
+        required=True, 
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Enter the manager\'s email',
+            'required': 'required'
+        })
+    )
+    job_title = forms.CharField(
+        label='New Users Job Title', 
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter the job title',
+            'required': 'required'
+        })
+    )
+    # This is the correct field for department dropdown
+    department = forms.ModelChoiceField(
+        queryset=Department.objects.all(),  # Use ModelChoiceField with queryset
+        label='Department',
+        required=True,
+        widget=forms.Select(attrs={'required': 'required'})
+    )
+    site = forms.ModelChoiceField(
+        queryset=Site.objects.all(), 
+        label='Base site of the New user', 
+        required=True,
+        widget=forms.Select(attrs={'required': 'required'})
+    )
+    email = forms.EmailField(
+        label='Submitters Email', 
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Enter your email',
+            'required': 'required'
+        })
+    )
 
     class Meta:
         model = OnboardingForm
@@ -23,7 +69,6 @@ class OnboardingFormInitial(forms.ModelForm):
             'site': 'Base site of the New user',
             'email': 'Submitters Email',
         }
-
 
 class OnboardingFormHardware(forms.ModelForm):
     need_hardware = forms.ChoiceField(choices=[('Y', 'Yes'), ('N', 'No')], label='Need Hardware')

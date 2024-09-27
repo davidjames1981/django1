@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
 from django.shortcuts import redirect
+from images import views
 
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
@@ -33,11 +34,11 @@ from django.shortcuts import redirect
 #     path('', lambda request: redirect('login')),
 # ]
 
-from django.urls import path, include
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('images/', include(('images.urls', 'images'), namespace='images')),
+    path('images/', views.show_image, name='images:imageshome'),
     path('onboarding/', include('onboarding.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),

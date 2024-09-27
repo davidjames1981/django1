@@ -9,4 +9,4 @@ def imageshome(request):
     return render(request, "images/images.html")
 
 def show_image(request, image_id):
-    return render(request, 'images/image.html', {'image_id': image_id})
+    return render(request, 'images/images.html', {'image_id': image_id})

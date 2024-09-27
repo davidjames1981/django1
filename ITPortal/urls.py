@@ -20,15 +20,26 @@ from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
 from django.shortcuts import redirect
 
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('images/', include('images.urls')),  
+#     path('onboarding/', include('onboarding.urls')),  
+#     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+#     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+#     path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+#     path('favicon.ico', lambda x: HttpResponse(status=204)),
+    
+#     # Redirect the root URL to the login page
+#     path('', lambda request: redirect('login')),
+# ]
+
+from django.urls import path, include
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('images/', include('images.urls')),  
-    path('onboarding/', include('onboarding.urls')),  
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('images/', include(('images.urls', 'images'), namespace='images')),
+    path('onboarding/', include('onboarding.urls')),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('favicon.ico', lambda x: HttpResponse(status=204)),
-    
-    # Redirect the root URL to the login page
-    path('', lambda request: redirect('login')),
 ]
+

@@ -4,5 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render 
 
 
+
 def imageshome(request):
     return render(request, "images/images.html")
+
+def show_image(request, image_id):
+    return render(request, 'images/image.html', {'image_id': image_id})

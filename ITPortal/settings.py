@@ -22,12 +22,21 @@ import dj_database_url
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY") #'django-insecure-#6n181%lp)lkf+hx343^m6hfc3kc7%h130f312fwhqniv5u_dx'
+#SECRET_KEY = os.environ.get("SECRET_KEY") #'django-insecure-#6n181%lp)lkf+hx343^m6hfc3kc7%h130f312fwhqniv5u_dx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower()  == "true"
+#DEBUG = os.environ.get("DEBUG","False").lower()  == "true"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+
+
+
+SECRET_KEY =  'django-insecure-#6n181%lp)lkf+hx343^m6hfc3kc7%h130f312fwhqniv5u_dx'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = "False"
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'onboarding'
+    'onboarding',
+    'images'
 ]
 
 
@@ -93,9 +103,9 @@ DATABASES = {
     }
 }
 
-database_url = os.environ.get("DATABASE_URL")
+#database_url = os.environ.get("DATABASE_URL")
 
-DATABASES["default"] = dj_database_url.parse(database_url)
+#DATABASES["default"] = dj_database_url.parse(database_url)
 
 #DATABASES["default"] = dj_database_url.parse("postgresql://db_test_django_user:IMmetgqm4Od55ezhxe8GBy8iptCHdkjZ@dpg-cro0ua08fa8c738m15o0-a.frankfurt-postgres.render.com/db_test_django")
  

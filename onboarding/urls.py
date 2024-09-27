@@ -4,6 +4,7 @@ from django.contrib.auth.views import LogoutView
 from django.contrib.auth import views as auth_views
 from . import views
 
+
 urlpatterns = [
 
     path('', views.onboarding_landing, name='onboarding_landing'),

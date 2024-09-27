@@ -115,6 +115,16 @@
             </div>
         </div>
 
+        <div class="dropdown">
+            <button class="dropbtn">Images
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{% url 'imagehome' %}">upload</a>
+
+            </div>
+        </div>
+
         <!-- Login/Logout Links -->
         <div class="navbar-right">
             {% if user.is_authenticated %}

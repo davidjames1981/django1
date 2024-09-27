@@ -38,7 +38,8 @@ from images import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('images/', views.show_image, name='images:imageshome'),
+    path('images/', views.images_home, name='images_home'),
+    path('images/<slug:image_id>/', views.show_image, name='show_image'), 
     path('onboarding/', include('onboarding.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),

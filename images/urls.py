@@ -9,7 +9,7 @@ app_name ='images'
 
 urlpatterns = [
  
-    path('', views.images_home, name='imageshome'), 
-    path('<slug:image_id>/', views.show_image, name='show_image'), 
+    #path('', views.images_home, name='imageshome'), 
+    #path('<slug:image_id>/', views.show_image, name='show_image'), 
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
 ]

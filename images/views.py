@@ -5,8 +5,8 @@ from django.shortcuts import render
 
 
 
-def imageshome(request):
-    return render(request, "images/images.html")
+def images_home(request):
+    return render(request, 'images.html')  # For /images/
 
 def show_image(request, image_id):
-    return render(request, 'images/images.html', {'image_id': image_id})
+    return render(request, 'images_template.html', {'image_id': image_id})  # For /images/123

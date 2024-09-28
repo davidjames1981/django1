@@ -3,5 +3,55 @@
 {% block title %}Images{% endblock %}
 
 {% block content %}
-<p>Image ID: {{ image_id }}</p>
+<div class="card shadow-lg mb-4">
+    <div class="card-header bg-primary text-white text-center">
+        <h3>Part Numner - {{ image_string }}</h3>
+    </div>
+    <div class="card-body">
+       
+
+        <!-- Step 1: Image Selection, Hidden if Image Uploaded -->
+        <form method="post" enctype="multipart/form-data" id="uploadForm">
+            {% csrf_token %}
+            <p class="text-center text-muted">Follow the steps below to upload your image:</p>
+            <div class="form-group mb-4">
+                <label for="image" class="form-label">Step 1: Select an Image</label>
+                <input type="file" name="image" id="image" class="form-control" required></br></br>
+            </div>
+
+            <!-- Step 2: Upload Button -->
+            <div class="form-group mb-4">
+                <button type="submit" class="btn btn-success btn-block">Step 2: Upload Image</button>
+            </div>
+        </form>
+
+        <!-- Step 3: Show Image if Found -->
+        {% if image_found %}
+            <div id="imageContainer" class="text-center">
+                <img src="{{ image_url }}" alt="Uploaded Image" style="width: 600px; height: 600px; object-fit: cover;" class="img-thumbnail mt-3"/>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Full-screen overlay with spinner -->
+<div id="loadingOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); z-index:1000; text-align:center;">
+    <div class="spinner-border text-light" role="status" style="margin-top:20%; width: 5rem; height: 5rem;">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <p style="color:white; margin-top: 10px;">Processing... Please wait.</p>
+</div>
+
+<script>
+    // Show the full-screen loading overlay when form is submitted
+    document.getElementById('uploadForm').addEventListener('submit', function() {
+        document.getElementById('loadingOverlay').style.display = 'block';
+    });
+
+    // Hide the form when the image is uploaded
+    {% if image_found %}
+    document.getElementById('uploadForm').style.display = 'none';
+    {% endif %}
+</script>
+
 {% endblock %}

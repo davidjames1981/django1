@@ -1,8 +1,29 @@
-
 {% extends 'base.html' %}
 
-{% block title %}Images{% endblock %}
+{% block title %}Images Instructions{% endblock %}
 
 {% block content %}
-
+<div class="card shadow-lg">
+    <div class="card-header bg-info text-white text-center">
+        <h3>How to Use the Image Upload App</h3>
+    </div>
+    <div class="card-body">
+        <p class="lead text-center">This application allows you to view or upload images for specific part numbers. Follow these easy steps:</p>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Step 1:</strong> In the browser's address bar, type the part number at the end of the URL and press <strong>Enter</strong>. Example: <code>http://yourdomain.com/images/1234</code>
+            </li>
+            <li class="list-group-item">
+                <strong>Step 2:</strong> If an image is found for the part number, it will be displayed immediately.
+            </li>
+            <li class="list-group-item">
+                <strong>Step 3:</strong> If no image is found, you'll have the option to upload one directly from your device.
+            </li>
+            <li class="list-group-item">
+                <strong>Step 4:</strong> Once uploaded, the image will be displayed automatically.
+            </li>
+        </ul>
+        <p class="text-center mt-4">Start by entering a part number in the URL!</p>
+    </div>
+</div>
 {% endblock %}
